@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -39,21 +41,16 @@ class _SplashWelcomeScreenState extends ConsumerState<SplashWelcomeScreen>
     ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeIn));
 
     _controller.forward();
-
-    // بعد ما الـ widget تتهيأ نبدأ نقرأ الـ provider
     _decideNavigation();
   }
 
   Future<void> _decideNavigation() async {
-    // ننتظر نتيجة الـ provider
     final dest = await ref.read(appStartDestinationProvider.future).catchError((
       _,
     ) {
-      // لو حصل error، رجّعنا login افتراضيًا
       return AppStartDestination.login;
     });
 
-    // نسيب فرصة صغيرة للأنيميشن يكمل (اختياري)
     await Future.delayed(const Duration(milliseconds: 700));
 
     if (!mounted) return;
@@ -81,7 +78,6 @@ class _SplashWelcomeScreenState extends ConsumerState<SplashWelcomeScreen>
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    // لو حابب تظهر حالة تحميل من الـ provider:
     final appStartAsync = ref.watch(appStartDestinationProvider);
 
     return Scaffold(
@@ -116,8 +112,7 @@ class _SplashWelcomeScreenState extends ConsumerState<SplashWelcomeScreen>
                   ),
                 ),
                 const SizedBox(height: 12),
-
-                // حالة تحميل أو Error من Riverpod (اختياري تعرض حاجة)
+                // حالة التحميل أو الخطأ
                 appStartAsync.when(
                   data: (_) => const SizedBox.shrink(),
                   loading: () => const Padding(
