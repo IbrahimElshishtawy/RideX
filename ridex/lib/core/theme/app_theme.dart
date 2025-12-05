@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'app_colors.dart';
 
@@ -135,7 +137,7 @@ class AppTheme {
       ),
     ),
 
-    cardTheme: const CardTheme(
+    cardTheme: CardThemeData(
       color: AppColors.lightCard,
       elevation: 4,
       shadowColor: Colors.black.withOpacity(0.06),
@@ -151,10 +153,10 @@ class AppTheme {
       ),
     ),
 
-    dialogTheme: DialogTheme(
+    dialogTheme: DialogThemeData(
       backgroundColor: AppColors.lightSurface,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
-      titleTextStyle: const TextStyle(
+      titleTextStyle: TextStyle(
         fontSize: 18,
         fontWeight: FontWeight.w600,
         color: AppColors.lightTextPrimary,
@@ -319,7 +321,7 @@ class AppTheme {
       ),
     ),
 
-    cardTheme: CardTheme(
+    cardTheme: CardThemeData(
       color: AppColors.darkCard,
       elevation: 4,
       shadowColor: Colors.black.withOpacity(0.3),
@@ -335,16 +337,16 @@ class AppTheme {
       ),
     ),
 
-    dialogTheme: DialogTheme(
+    dialogTheme: DialogThemeData(
       backgroundColor: AppColors.darkSurface,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
-      titleTextStyle: const TextStyle(
+      titleTextStyle: TextStyle(
         fontSize: 18,
         fontWeight: FontWeight.w600,
         color: AppColors.darkTextPrimary,
         fontFamily: 'Cairo',
       ),
-      contentTextStyle: const TextStyle(
+      contentTextStyle: TextStyle(
         fontSize: 14,
         color: AppColors.darkTextSecondary,
         fontFamily: 'Cairo',
