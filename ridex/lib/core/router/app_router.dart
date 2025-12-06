@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:ridex/features/auth/presentation/screens/onboarding_carousel_screen.dart';
 import 'package:ridex/features/auth/presentation/screens/splash_welcome_screen.dart';
 
 class AppRouter {
@@ -13,7 +14,7 @@ class AppRouter {
       ),
       GoRoute(
         path: '/onboarding',
-        //  builder: (context, state) => const OnboardingCarouselScreen(),
+        builder: (context, state) => const OnboardingCarouselScreen(),
       ),
     ],
   );
