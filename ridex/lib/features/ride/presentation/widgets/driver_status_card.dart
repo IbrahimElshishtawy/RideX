@@ -1,4 +1,6 @@
-﻿import 'package:flutter/material.dart';
+﻿// ignore_for_file: deprecated_member_use
+
+import 'package:flutter/material.dart';
 
 class RideCard extends StatelessWidget {
   final String driverName;
@@ -30,7 +32,7 @@ class RideCard extends StatelessWidget {
             color: theme.shadowColor.withOpacity(0.08),
             blurRadius: 10,
             offset: Offset(0, 4),
-          )
+          ),
         ],
       ),
       child: Row(
@@ -65,10 +67,10 @@ class RideCard extends StatelessWidget {
                     const SizedBox(width: 4),
                     Text(rating.toStringAsFixed(1)),
                   ],
-                )
+                ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
