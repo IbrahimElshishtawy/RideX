@@ -49,8 +49,7 @@ class _OnboardingCarouselScreenState
     if (_index == items.length - 1) {
       _completeOnboarding();
     } else {
-      _controller.animateToPage(
-        _index + 1,
+      _controller.nextPage(
         duration: const Duration(milliseconds: 350),
         curve: Curves.easeOut,
       );
@@ -60,75 +59,88 @@ class _OnboardingCarouselScreenState
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    const curveColor = Color(0xFFE6E4FA);
 
     return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
       body: SafeArea(
         child: Column(
           children: [
-            // -------- IMAGE AREA --------
+            // ==================== IMAGE AREA (FIXED BACKGROUND: WHITE) ====================
             Expanded(
               flex: 6,
-              child: PageView.builder(
-                controller: _controller,
-                itemCount: items.length,
-                onPageChanged: (i) => setState(() => _index = i),
-                itemBuilder: (context, i) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: Image.asset(items[i].image, fit: BoxFit.contain),
-                  );
-                },
+              child: Container(
+                width: double.infinity,
+
+                color: Colors.white,
+
+                child: PageView.builder(
+                  controller: _controller,
+                  itemCount: items.length,
+                  onPageChanged: (i) => setState(() => _index = i),
+                  itemBuilder: (context, i) {
+                    return Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 16),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        image: DecorationImage(
+                          image: AssetImage(items[i].image),
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                    );
+                  },
+                ),
               ),
             ),
 
-            // -------- CURVED WHITE AREA --------
+            const SizedBox(height: 10),
+
+            // ==================== FIXED INDICATORS (لا تتحرك مع الصور) ====================
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: List.generate(
+                items.length,
+                (dotIndex) => AnimatedContainer(
+                  duration: const Duration(milliseconds: 250),
+                  margin: const EdgeInsets.symmetric(horizontal: 4),
+                  width: _index == dotIndex ? 10 : 6,
+                  height: 8,
+                  decoration: BoxDecoration(
+                    color: _index == dotIndex
+                        ? theme.colorScheme.primary
+                        : theme.colorScheme.primary.withOpacity(0.3),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 10),
+
+            // ==================== CURVED BOTTOM SECTION ====================
             Expanded(
-              flex: 7,
+              flex: 5,
               child: Stack(
                 alignment: Alignment.topCenter,
                 children: [
-                  // الخلفية Curve
                   Container(
                     width: double.infinity,
-                    decoration: BoxDecoration(
-                      color: theme.colorScheme.surface,
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(200),
-                        topRight: Radius.circular(200),
+                    decoration: const BoxDecoration(
+                      color: curveColor,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(300),
+                        topRight: Radius.circular(300),
                       ),
                     ),
                   ),
 
-                  // Indicators
                   Positioned(
-                    top: 30,
-                    child: Row(
-                      children: List.generate(
-                        items.length,
-                        (i) => AnimatedContainer(
-                          duration: const Duration(milliseconds: 250),
-                          margin: const EdgeInsets.symmetric(horizontal: 4),
-                          width: _index == i ? 12 : 6,
-                          height: 6,
-                          decoration: BoxDecoration(
-                            color: _index == i
-                                ? theme.colorScheme.primary
-                                : theme.colorScheme.primary.withOpacity(0.4),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  // TEXT CONTENT
-                  Positioned(
-                    top: 80,
-                    left: 25,
-                    right: 25,
+                    top: 60,
+                    left: 20,
+                    right: 20,
                     child: Column(
                       children: [
+                        const SizedBox(height: 27),
                         Text(
                           items[_index].title,
                           textAlign: TextAlign.center,
@@ -141,22 +153,20 @@ class _OnboardingCarouselScreenState
                           items[_index].desc,
                           textAlign: TextAlign.center,
                           style: theme.textTheme.bodyMedium?.copyWith(
-                            color: theme.colorScheme.onSurface.withOpacity(0.7),
                             fontSize: 15,
+                            color: theme.colorScheme.onSurface.withOpacity(0.7),
                           ),
                         ),
                       ],
                     ),
                   ),
 
-                  // BUTTON
                   Positioned(
                     bottom: 40,
                     left: 24,
                     right: 24,
                     child: SizedBox(
-                      height: 54,
-                      width: double.infinity,
+                      height: 52,
                       child: ElevatedButton(
                         onPressed: _next,
                         child: Text(
