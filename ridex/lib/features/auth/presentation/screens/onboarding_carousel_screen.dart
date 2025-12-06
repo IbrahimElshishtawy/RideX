@@ -68,10 +68,8 @@ class _OnboardingCarouselScreenState
             // ==================== IMAGE AREA (FIXED BACKGROUND: WHITE) ====================
             Expanded(
               flex: 6,
-              child: Container(
+              child: SizedBox(
                 width: double.infinity,
-
-                color: Colors.white,
 
                 child: PageView.builder(
                   controller: _controller,
@@ -81,7 +79,6 @@ class _OnboardingCarouselScreenState
                     return Container(
                       margin: const EdgeInsets.symmetric(horizontal: 16),
                       decoration: BoxDecoration(
-                        color: Colors.white,
                         image: DecorationImage(
                           image: AssetImage(items[i].image),
                           fit: BoxFit.contain,
@@ -117,7 +114,6 @@ class _OnboardingCarouselScreenState
 
             const SizedBox(height: 10),
 
-            // ==================== CURVED BOTTOM SECTION ====================
             Expanded(
               flex: 5,
               child: Stack(
