@@ -42,7 +42,7 @@ class _OnboardingCarouselScreenState
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool("seen_onboarding", true);
     if (!mounted) return;
-    context.go("/login");
+    context.go("/create-account");
   }
 
   void _next() {
