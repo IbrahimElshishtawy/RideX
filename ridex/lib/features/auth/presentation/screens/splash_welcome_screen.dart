@@ -119,7 +119,7 @@ class _SplashWelcomeScreenState extends ConsumerState<SplashWelcomeScreen>
                     padding: EdgeInsets.only(top: 16),
                     child: CircularProgressIndicator(strokeWidth: 2),
                   ),
-                  error: (_, __) => Padding(
+                  error: (_, _) => Padding(
                     padding: const EdgeInsets.only(top: 16),
                     child: Text(
                       'Something went wrong',
