@@ -198,7 +198,7 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
                   ],
                 ),
 
-                const SizedBox(height: 30),
+                const SizedBox(height: 80),
 
                 // -------- Sign Up Button --------
                 SizedBox(
@@ -224,8 +224,6 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
                     ),
                   ),
                 ),
-
-                const SizedBox(height: 30),
               ],
             ),
           ),
