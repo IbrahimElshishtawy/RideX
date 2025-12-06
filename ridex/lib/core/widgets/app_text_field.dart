@@ -1,4 +1,6 @@
-﻿import 'package:flutter/material.dart';
+﻿// ignore_for_file: deprecated_member_use
+
+import 'package:flutter/material.dart';
 
 class AppTextField extends StatelessWidget {
   final TextEditingController? controller;
@@ -37,16 +39,11 @@ class AppTextField extends StatelessWidget {
         fillColor: theme.colorScheme.surface.withOpacity(0.05),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(14),
-          borderSide: BorderSide(
-            color: theme.dividerColor.withOpacity(0.3),
-          ),
+          borderSide: BorderSide(color: theme.dividerColor.withOpacity(0.3)),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(14),
-          borderSide: BorderSide(
-            color: theme.colorScheme.primary,
-            width: 1.4,
-          ),
+          borderSide: BorderSide(color: theme.colorScheme.primary, width: 1.4),
         ),
       ),
     );
