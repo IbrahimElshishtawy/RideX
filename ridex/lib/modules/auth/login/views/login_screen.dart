@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_underscores
+
 import 'dart:math' as math;
 import 'dart:ui';
 
@@ -185,7 +187,6 @@ class _BackgroundCanvas extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return AnimatedBuilder(
       animation: orbCtrl,
       builder: (_, __) {
