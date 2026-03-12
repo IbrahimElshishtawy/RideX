@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../modules/auth/login/views/login_screen.dart';
+import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_preview_screen.dart';
+import '../modules/onboarding/bindings/onboarding_binding.dart';
 import 'theme/app_colors.dart';
 import '../modules/onboarding/views/intro_flow_screen.dart';
 
@@ -10,7 +13,7 @@ class RideXApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'RideX',
       theme: ThemeData(
@@ -21,14 +24,26 @@ class RideXApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         fontFamily: 'sans-serif',
       ),
-      routes: {
-        '/home': (_) => const HomePreviewScreen(),
-        '/login': (_) => const LoginScreen(),
-      },
-      home: const Directionality(
-        textDirection: TextDirection.rtl,
-        child: IntroFlowScreen(),
-      ),
+      initialRoute: '/',
+      getPages: [
+        GetPage(
+          name: '/',
+          page: () => const Directionality(
+            textDirection: TextDirection.rtl,
+            child: IntroFlowScreen(),
+          ),
+          binding: OnboardingBinding(),
+        ),
+        GetPage(
+          name: '/home',
+          page: () => const HomePreviewScreen(),
+          binding: HomeBinding(),
+        ),
+        GetPage(
+          name: '/login',
+          page: () => const LoginScreen(),
+        ),
+      ],
     );
   }
 }
