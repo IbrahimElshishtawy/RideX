@@ -148,12 +148,18 @@ class HomePreviewScreen extends StatelessWidget {
                                     return Container(
                                       width: index == 3 ? 16 : 7,
                                       height: 7,
-                                      margin: const EdgeInsets.symmetric(horizontal: 2),
+                                      margin: const EdgeInsets.symmetric(
+                                        horizontal: 2,
+                                      ),
                                       decoration: BoxDecoration(
                                         color: index == 3
                                             ? Colors.white
-                                            : Colors.white.withValues(alpha: 0.45),
-                                        borderRadius: BorderRadius.circular(999),
+                                            : Colors.white.withValues(
+                                                alpha: 0.45,
+                                              ),
+                                        borderRadius: BorderRadius.circular(
+                                          999,
+                                        ),
                                       ),
                                     );
                                   }),
@@ -227,44 +233,6 @@ class HomePreviewScreen extends StatelessWidget {
                               ),
                             ),
                           ],
-                        ),
-                        const SizedBox(height: 22),
-                        const Text(
-                          'مطاعم مقترحة',
-                          textAlign: TextAlign.right,
-                          style: TextStyle(
-                            color: AppColors.textStrong,
-                            fontSize: 24,
-                            fontWeight: FontWeight.w900,
-                          ),
-                        ),
-                        const SizedBox(height: 12),
-                        _OfferRestaurantCard(
-                          title: 'ميدان الشام',
-                          subtitle: 'سوري',
-                          imagePath: 'assets/image/image1.png',
-                          onTap: () => _goToLogin(context),
-                        ),
-                        const SizedBox(height: 10),
-                        _OfferRestaurantCard(
-                          title: 'أبو يونس',
-                          subtitle: 'مشويات',
-                          imagePath: 'assets/image/image2.png',
-                          onTap: () => _goToLogin(context),
-                        ),
-                        const SizedBox(height: 10),
-                        _OfferRestaurantCard(
-                          title: 'مطعم عواد',
-                          subtitle: 'مأكولات',
-                          imagePath: 'assets/image/image3.png',
-                          onTap: () => _goToLogin(context),
-                        ),
-                        const SizedBox(height: 10),
-                        _OfferRestaurantCard(
-                          title: 'عم صلاح',
-                          subtitle: 'مأكولات',
-                          imagePath: 'assets/image/image2.png',
-                          onTap: () => _goToLogin(context),
                         ),
                       ],
                     ),
@@ -353,11 +321,7 @@ class _RestaurantCard extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: const BorderRadius.vertical(top: Radius.circular(18)),
-            child: Image.asset(
-              imagePath,
-              height: 112,
-              fit: BoxFit.cover,
-            ),
+            child: Image.asset(imagePath, height: 112, fit: BoxFit.cover),
           ),
           Padding(
             padding: const EdgeInsets.all(10),
@@ -405,159 +369,6 @@ class _RestaurantCard extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class _OfferRestaurantCard extends StatelessWidget {
-  const _OfferRestaurantCard({
-    required this.title,
-    required this.subtitle,
-    required this.imagePath,
-    required this.onTap,
-  });
-
-  final String title;
-  final String subtitle;
-  final String imagePath;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(16),
-      child: Ink(
-        padding: const EdgeInsets.all(8),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(16),
-          boxShadow: const [
-            BoxShadow(
-              color: Color(0x12000000),
-              blurRadius: 16,
-              offset: Offset(0, 8),
-            ),
-          ],
-        ),
-        child: Row(
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(12),
-              child: Image.asset(
-                imagePath,
-                width: 108,
-                height: 96,
-                fit: BoxFit.cover,
-              ),
-            ),
-            const SizedBox(width: 10),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Row(
-                    children: [
-                      const Icon(
-                        Icons.favorite,
-                        color: Color(0xFFE74C3C),
-                        size: 18,
-                      ),
-                      const Spacer(),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Text(
-                            title,
-                            style: const TextStyle(
-                              color: AppColors.textStrong,
-                              fontSize: 22,
-                              fontWeight: FontWeight.w900,
-                            ),
-                          ),
-                          Text(
-                            subtitle,
-                            style: const TextStyle(
-                              color: AppColors.textMuted,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 8),
-                  const Text(
-                    'رسوم التوصيل: 10 جنية توصيل سريع',
-                    textAlign: TextAlign.right,
-                    style: TextStyle(
-                      color: AppColors.textMuted,
-                      fontSize: 11,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  const SizedBox(height: 6),
-                  Row(
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 8,
-                          vertical: 3,
-                        ),
-                        decoration: BoxDecoration(
-                          color: AppColors.primary,
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: const Row(
-                          children: [
-                            Icon(
-                              Icons.star_rounded,
-                              color: Color(0xFFFFD75E),
-                              size: 14,
-                            ),
-                            SizedBox(width: 2),
-                            Text(
-                              '4.0',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 11,
-                                fontWeight: FontWeight.w800,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(width: 8),
-                      const Expanded(
-                        child: Text(
-                          'توصيل خلال 15-20 دقيقة',
-                          textAlign: TextAlign.right,
-                          style: TextStyle(
-                            color: AppColors.textMuted,
-                            fontSize: 11,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 8),
-                  const Text(
-                    'الطلب الثاني: 100 جنيه',
-                    textAlign: TextAlign.right,
-                    style: TextStyle(
-                      color: AppColors.textStrong,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w900,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }
