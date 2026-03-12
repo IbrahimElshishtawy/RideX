@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../modules/auth/login/views/login_screen.dart';
+import '../modules/home/views/home_preview_screen.dart';
 import 'theme/app_colors.dart';
 import '../modules/onboarding/views/intro_flow_screen.dart';
 
@@ -19,6 +21,10 @@ class RideXApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         fontFamily: 'sans-serif',
       ),
+      routes: {
+        '/home': (_) => const HomePreviewScreen(),
+        '/login': (_) => const LoginScreen(),
+      },
       home: const Directionality(
         textDirection: TextDirection.rtl,
         child: IntroFlowScreen(),
