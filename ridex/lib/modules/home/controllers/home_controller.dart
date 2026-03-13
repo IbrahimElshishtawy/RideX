@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 class HomeController extends GetxController with GetTickerProviderStateMixin {
   late final AnimationController staggerController;
+  late final AnimationController ambientController;
 
   final RxInt selectedCategory = 0.obs;
   final RxInt activeNavIndex = 0.obs;
@@ -65,6 +66,10 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
       vsync: this,
       duration: const Duration(milliseconds: 900),
     )..forward();
+    ambientController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 4200),
+    )..repeat(reverse: true);
   }
 
   void goToLogin() => Get.toNamed('/login');
@@ -103,9 +108,20 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
     );
   }
 
+  Animation<double> breathe({
+    double begin = 0.0,
+    double end = 1.0,
+    Curve curve = Curves.easeInOut,
+  }) {
+    return Tween<double>(begin: begin, end: end).animate(
+      CurvedAnimation(parent: ambientController, curve: curve),
+    );
+  }
+
   @override
   void onClose() {
     staggerController.dispose();
+    ambientController.dispose();
     super.onClose();
   }
 }

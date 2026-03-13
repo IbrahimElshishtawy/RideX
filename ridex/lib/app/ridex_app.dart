@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../modules/auth/login/bindings/login_binding.dart';
 import '../modules/auth/login/views/login_screen.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_preview_screen.dart';
@@ -42,6 +43,7 @@ class RideXApp extends StatelessWidget {
         GetPage(
           name: '/login',
           page: () => const LoginScreen(),
+          binding: LoginBinding(),
         ),
       ],
     );
