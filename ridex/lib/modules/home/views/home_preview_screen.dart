@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:ridex/modules/home/views/widgets/home_sections.dart';
 
 import '../controllers/home_controller.dart';
 import 'widgets/home_bottom_nav.dart';
 import 'widgets/home_header.dart';
-import 'widgets/home_sections.dart';
 
 class HomePreviewScreen extends GetView<HomeController> {
   const HomePreviewScreen({super.key});

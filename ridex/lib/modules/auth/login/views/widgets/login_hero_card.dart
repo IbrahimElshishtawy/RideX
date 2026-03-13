@@ -455,7 +455,7 @@ class _PulsingDotState extends State<_PulsingDot>
   Widget build(BuildContext context) {
     return AnimatedBuilder(
       animation: _ctrl,
-      builder: (_, __) => Opacity(
+      builder: (_, _) => Opacity(
         opacity: _opacity.value,
         child: Transform.scale(
           scale: _scale.value,
